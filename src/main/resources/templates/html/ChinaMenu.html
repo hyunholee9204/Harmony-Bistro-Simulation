@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Harmony Bistro - China Menu</title>
+    <link rel="stylesheet" th:href="@{/css/MainPage.css}">
+    <link rel="stylesheet" th:href="@{/css/Menu.css}">
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<section class="menu-hero">
+    <h1>Chinese Cuisine</h1>
+    <p>정통 중식 요리의 깊은 풍미를 Harmony Bistro에서 경험해보세요.</p>
+</section>
+<section class="menu-section">
+    <h2>Signature Dishes</h2>
+    <div class="menu-grid">
+        <div class="menu-card">
+            <img src="/images/china/jjajang.jpeg">
+            <h3>짜장면</h3>
+            <p>춘장 소스와 돼지고기, 야채를 넣어 만든 한국식 중화요리</p>
+            <span class="price">₩11,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/china/jjam.jpeg">
+            <h3>짬뽕</h3>
+            <p>해산물과 매콤한 국물이 어우러진 대표 중식 면요리</p>
+            <p class="menu-note">※ 맵기 조절이 가능합니다.</p>
+            <span class="price">₩13,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/china/tang.jpeg">
+            <h3>탕수육</h3>
+            <p>바삭하게 튀긴 돼지고기에 새콤달콤한 소스를 곁들인 요리</p>
+            <span class="price">₩32,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/china/kkan.jpeg">
+            <h3>깐풍기</h3>
+            <p>바삭하게 튀긴 닭고기를 매콤달콤한 소스로 볶아낸 인기 중식 요리</p>
+            <span class="price">₩30,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/china/yurin.jpeg">
+            <h3>유린기</h3>
+            <p>바삭한 닭튀김 위에 상큼한 간장 소스를 더한 요리</p>
+            <span class="price">₩30,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/china/chil.jpeg">
+            <h3>칠리새우</h3>
+            <p>탱글한 새우를 매콤한 칠리소스와 함께 볶아낸 중식 해산물 요리</p>
+            <span class="price">₩30,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/china/gochu.jpeg">
+            <h3>고추잡채</h3>
+            <p>피망과 돼지고기를 볶아 고소하게 즐기는 요리</p>
+            <span class="price">₩32,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/china/nurung.jpeg">
+            <h3>해물누룽지탕</h3>
+            <p>바삭한 누룽지에 다양한 해산물과 진한 소스를 더한 따뜻한 중식 요리</p>
+            <span class="price">₩38,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/china/mapa.jpeg">
+            <h3>마파두부</h3>
+            <p>두부와 다진 고기를 매콤하게 볶아낸 사천요리</p>
+            <p class="menu-note">※ 밥이 함께 제공됩니다.</p>
+            <span class="price">₩24,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/china/pal.jpeg">
+            <h3>팔보채</h3>
+            <p>다양한 해산물과 채소를 볶아낸 고급 중식 요리</p>
+            <span class="price">₩42,000</span>
+        </div>
+    </div>
+</section>
+<section class="menu-section">
+    <h2>Traditional Chinese Desserts</h2>
+    <div class="menu-grid">
+        <div class="menu-card">
+            <img src="/images/china/ChinaD1.jpeg">
+            <h3>홍탕츠바</h3>
+            <p>튀긴 찹쌀떡 위에 흑설탕 시럽을 뿌린 달콤한 중국 전통 디저트</p>
+            <span class="price">₩7,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/china/ChinaD2.jpeg">
+            <h3>뤼다군</h3>
+            <p>팥소가 들어간 찹쌀 디저트에 콩가루를 묻힌 베이징 전통 간식</p>
+            <span class="price">₩7,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/china/pudding.jpeg">
+            <h3>망고 푸딩</h3>
+            <p>부드러운 푸딩에 망고의 달콤한 풍미를 더한 인기 디저트</p>
+            <span class="price">₩7,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/china/tapioka.jpeg">
+            <h3>코코넛 타피오카</h3>
+            <p>코코넛 밀크와 타피오카 펄이 어우러진 달콤한 중국식 디저트</p>
+            <span class="price">₩7,000</span>
+        </div>
+    </div>
+</section>
+<section class="menu-section">
+    <h2>Side Menu & Beverages</h2>
+    <div class="menu-grid">
+        <div class="menu-card">
+            <img src="/images/china/bok.jpeg">
+            <h3>볶음밥</h3>
+            <p>고슬고슬하게 볶아낸 중국식 볶음밥</p>
+            <span class="price">₩11,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/china/mandu.jpeg">
+            <h3>군만두</h3>
+            <p>바삭하게 구운 만두로 인기 있는 사이드 메뉴</p>
+            <span class="price">₩9,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/china/goryang.jpeg">
+            <h3>고량주</h3>
+            <p>중국을 대표하는 도수 높은 전통 증류주</p>
+            <span class="price">₩18,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/china/bing.jpeg">
+            <h3>빙홍차</h3>
+            <p>상큼하고 달콤한 중국식 아이스 홍차 음료</p>
+            <span class="price">₩5,000</span>
+        </div>
+    </div>
+</section>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

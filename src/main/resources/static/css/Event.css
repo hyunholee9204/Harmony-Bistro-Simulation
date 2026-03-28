@@ -1,0 +1,191 @@
+.event-hero {
+    text-align: center;
+    padding: 60px;
+    background: #f8f8f8;
+}
+
+.event-hero h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.event-hero p {
+    color: #666;
+}
+
+.event-container {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 60px;
+}
+
+.event-card {
+    width: 320px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border-radius: 10px;
+    background: #fff;
+}
+
+.event-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.event-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.event-card h3 {
+    font-size: 18px;
+    margin: 15px 0 10px;
+}
+
+.event-card p {
+    font-size: 14px;
+    color: #777;
+}
+
+.detail-btn {
+    margin-top: 12px;
+    padding: 10px 20px;
+    background: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.detail-btn:hover {
+    background: #333;
+}
+
+.ended {
+    opacity: 0.5;
+}
+
+.event-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    margin: 60px 0 30px;
+    position: relative;
+}
+
+.event-title::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #333;
+    margin: 10px auto 0;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+    background: white;
+    width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    position: relative;
+    max-height: 80vh;
+    overflow-y: auto;
+    animation: fadeIn 0.3s ease;
+}
+
+#modalImg {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+#modalTitle {
+    font-size: 26px;
+    font-weight: 700;
+    margin: 20px 0 10px;
+}
+
+#modalTitle::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: black;
+    margin: 10px auto 0;
+}
+
+#modalDate {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+#modalContent {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 30px;
+    background: #fafafa;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.close {
+    position: fixed;
+    right: 450px;
+    top: 50px;
+    font-size: 32px;
+    color: black;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.reserve-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 14px 40px;
+    background: black;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.reserve-btn:hover {
+    background: #333;
+    transform: translateY(-2px);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<header class="header" th:fragment="header">
+    <div class="logo">
+        <a th:href="@{/}">Harmony Bistro</a>
+    </div>
+    <nav class="nav">
+        <ul class="menu">
+            <li>
+                <a>레스토랑 소개<br><span>Introduction</span></a>
+                <ul class="submenu">
+                    <li><a th:href="@{/greeting}">인사말</a></li>
+                    <li><a th:href="@{/philosophy}">레스토랑 철학</a></li>
+                </ul>
+            </li>
+            <li>
+                <a>메뉴<br><span>Menu</span></a>
+                <ul class="submenu">
+                    <li><a th:href="@{/koreamenu}">한식</a></li>
+                    <li><a th:href="@{/chinamenu}">중식</a></li>
+                    <li><a th:href="@{/westernmenu}">양식</a></li>
+                </ul>
+            </li>
+            <li>
+                <a>지점안내 & 예약<br><span>Stores & Reservation</span></a>
+                <ul class="submenu">
+                    <li><a th:href="@{/branch}">지점안내</a></li>
+                    <li><a th:href="@{/reservation}">예약하기</a></li>
+                </ul>
+            </li>
+            <li>
+                <a>커뮤니티<br><span>Community</span></a>
+                <ul class="submenu">
+                    <li><a th:href="@{/notice}">공지사항</a></li>
+                    <li><a th:href="@{/event}">이벤트</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</header>
+</html>

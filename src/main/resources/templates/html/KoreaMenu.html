@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Harmony Bistro - Korean Menu</title>
+    <link rel="stylesheet" th:href="@{/css/MainPage.css}">
+    <link rel="stylesheet" th:href="@{/css/Menu.css}">
+</head>
+<body class="page-container">
+<div th:replace="fragments/header :: header"></div>
+<section class="menu-hero">
+    <h1>Korean Cuisine</h1>
+    <p>한국 전통 요리의 깊은 풍미와 다양한 한식 메뉴를 Harmony Bistro에서 경험해보세요.</p>
+</section>
+<section class="menu-section">
+    <h2>Signature Dishes</h2>
+    <div class="menu-grid">
+        <div class="menu-card">
+            <img src="/images/korea/kimchi.jpeg">
+            <h3>김치찌개</h3>
+            <p>숙성된 김치와 돼지고기를 넣어 깊은 맛을 낸 한국 대표 찌개</p>
+            <span class="price">₩15,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/korea/bibim.jpeg">
+            <h3>비빔밥</h3>
+            <p>신선한 채소와 고기, 고추장을 함께 비벼 먹는 전통 한식</p>
+            <span class="price">₩14,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/korea/sam.jpeg">
+            <h3>삼겹살</h3>
+            <p>두툼한 돼지고기를 구워 다양한 쌈과 함께 즐기는 요리</p>
+            <span class="price">₩20,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/korea/fish.jpeg">
+            <h3>생선구이</h3>
+            <p>신선한 생선을 정성스럽게 구워 담백한 맛을 살린 메뉴</p>
+            <p class="menu-note">※ 계절에 따라 제공되는 생선의 종류가 달라질 수 있습니다.</p>
+            <span class="price">₩18,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/korea/bunsik.jpeg">
+            <h3>분식 세트</h3>
+            <p>떡볶이, 순대, 튀김을 함께 즐길 수 있는 인기 분식 메뉴</p>
+            <p class="menu-note">※ 떡볶이 맵기 조절이 가능합니다.</p>
+            <span class="price">₩15,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/korea/jeyuk.jpeg">
+            <h3>제육볶음</h3>
+            <p>매콤한 양념과 돼지고기를 함께 볶아낸 밥도둑 메뉴</p>
+            <span class="price">₩14,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/korea/gukbab.jpeg">
+            <h3>돼지국밥</h3>
+            <p>진한 돼지 육수에 고기와 밥을 함께 즐기는 든든한 한식</p>
+            <span class="price">₩13,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/korea/hanjung.jpeg">
+            <h3>한정식</h3>
+            <p>다양한 반찬과 요리를 한 상 가득 즐길 수 있는 전통 한식 코스</p>
+            <p class="menu-note">※ 제공되는 반찬 구성은 매일 조금씩 달라질 수 있으며, 리필 가능합니다.</p>
+            <span class="price">₩35,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/korea/bul.jpeg">
+            <h3>불고기</h3>
+            <p>달콤한 간장 양념에 재운 소고기를 부드럽게 볶아낸 한국 대표 요리</p>
+            <span class="price">₩22,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/korea/noodle.jpeg">
+            <h3>잔치국수</h3>
+            <p>멸치 육수에 소면과 고명을 올려 담백하게 즐기는 전통 국수</p>
+            <span class="price">₩13,000</span>
+        </div>
+    </div>
+</section>
+
+<section class="menu-section">
+    <h2>Korean Desserts</h2>
+    <div class="menu-grid dessert">
+        <div class="menu-card">
+            <img src="/images/korea/KoreaD1.jpeg">
+            <h3>송편과 식혜</h3>
+            <p>전통 떡과 달콤한 식혜를 함께 즐기는 한국식 디저트</p>
+            <span class="price">₩6,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/korea/in.jpeg">
+            <h3>인절미</h3>
+            <p>고소한 콩가루를 입힌 부드러운 전통 찹쌀떡</p>
+            <span class="price">₩6,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/korea/yak.jpeg">
+            <h3>약과</h3>
+            <p>꿀과 참기름 향이 어우러진 달콤한 전통 한과</p>
+            <span class="price">₩5,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/korea/KoreaD2.jpeg">
+            <h3>망고 빙수</h3>
+            <p>곱게 간 얼음 위에 망고와 다양한 토핑을 올린 시원한 디저트</p>
+            <span class="price">₩8,000</span>
+        </div>
+    </div>
+</section>
+
+<section class="menu-section">
+    <h2>Side Menu & Beverages</h2>
+    <div class="menu-grid">
+        <div class="menu-card">
+            <img src="/images/korea/rice.jpeg" alt="공기밥">
+            <h3>공기밥</h3>
+            <p>따뜻하게 지은 흰쌀밥</p>
+            <span class="price">₩1,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/korea/soju.jpeg" alt="소주">
+            <h3>소주</h3>
+            <p>한국을 대표하는 전통 증류주</p>
+            <span class="price">₩4,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/korea/mak.jpeg" alt="막걸리">
+            <h3>막걸리</h3>
+            <p>부드러운 풍미의 전통 쌀 발효주</p>
+            <span class="price">₩6,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/korea/coke.jpeg" alt="음료수">
+            <h3>음료수</h3>
+            <p>콜라, 사이다 등 다양한 음료</p>
+            <p class="menu-note">※ 제로나 사이다를 원하시면 말씀해주세요.</p>
+            <span class="price">₩2,000</span>
+        </div>
+    </div>
+</section>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

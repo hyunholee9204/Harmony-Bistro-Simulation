@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Harmony Bistro | 지점안내</title>
+    <link rel="stylesheet" th:href="@{/css/MainPage.css}">
+    <link rel="stylesheet" th:href="@{/css/Branch.css}">
+    <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f4d0fbac89d0b4850d5f2270dcefd8d6"></script>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<section class="page-title">
+    <h2>지점 안내</h2>
+    <p>Harmony Bistro의 프리미엄 매장을 만나보세요.</p>
+</section>
+
+<section class="branch-hero">
+    <img src="/images/Res.png" alt="레스토랑 이미지">
+</section>
+
+<section class="branch-list">
+    <div class="branch-item" onclick="openMap('강남점')">
+        <h3>강남점</h3>
+        <p>서울 강남구 테헤란로</p>
+        <p>운영시간: 11:00 ~ 22:00</p>
+    </div>
+    <div class="branch-item" onclick="openMap('홍대점')">
+        <h3>홍대점</h3>
+        <p>서울 마포구 홍익로</p>
+        <p>운영시간: 11:00 ~ 22:00</p>
+    </div>
+    <div class="branch-item" onclick="openMap('인천점')">
+        <h3>인천점</h3>
+        <p>인천 연수구 송도동</p>
+        <p>운영시간: 11:00 ~ 22:00</p>
+    </div>
+    <div class="branch-item" onclick="openMap('수원점')">
+        <h3>수원점</h3>
+        <p>경기 수원시 팔달구</p>
+        <p>운영시간: 11:00 ~ 22:00</p>
+    </div>
+
+</section>
+
+<div id="mapModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeMap()">&times;</span>
+        <div id="map" style="width:100%; height:400px;"></div>
+    </div>
+</div>
+
+<script>
+    function openMap(locationName) {
+
+        const modal = document.getElementById("mapModal");
+        modal.style.display = "block";
+
+        const locations = {
+            "강남점": { lat: 37.4979, lng: 127.0276 },
+            "홍대점": { lat: 37.5563, lng: 126.9236 },
+            "인천점": { lat: 37.3826, lng: 126.6567 },
+            "수원점": { lat: 37.2663, lng: 127.0000 }
+        };
+        const loc = locations[locationName];
+        const container = document.getElementById('map');
+        const options = {
+            center: new kakao.maps.LatLng(loc.lat, loc.lng),
+            level: 3
+        };
+
+        const map = new kakao.maps.Map(container, options);
+
+        const marker = new kakao.maps.Marker({
+            position: new kakao.maps.LatLng(loc.lat, loc.lng)
+        });
+
+        marker.setMap(map);
+
+        const infowindow = new kakao.maps.InfoWindow({
+            content: `<div style="padding:5px;">${locationName}</div>`
+        });
+
+        infowindow.open(map, marker);
+    }
+
+    function closeMap() {
+        document.getElementById("mapModal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        const modal = document.getElementById("mapModal");
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>WebRestaurant</title>
+    <link rel="stylesheet" href="/css/MainPage.css">
+</head>
+
+<body>
+<div th:replace="fragments/header :: header"></div>
+<section class="main-image">
+
+    <img src="/images/KoreanDish.jpeg">
+    <img src="/images/ChinaDish.jpeg">
+    <img src="/images/WesternDish.jpeg">
+
+</section>
+
+
+<section class="enter-section">
+
+    <h2>Restaurant Simulation</h2>
+
+    <button class="enter-btn" onclick="location.href='/simulation'">
+        레스토랑 입장
+    </button>
+
+</section>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

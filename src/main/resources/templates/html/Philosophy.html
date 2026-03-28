@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Harmony Bistro - 레스토랑 철학</title>
+    <link rel="stylesheet" th:href="@{/css/MainPage.css}">
+    <link rel="stylesheet" th:href="@{/css/Philosophy.css}">
+</head>
+<body class="page-container">
+<div th:replace="fragments/header :: header"></div>
+
+<section class="philosophy-hero">
+    <h1>Our Philosophy</h1>
+    <p>Harmony Bistro가 추구하는 미식의 가치</p>
+</section>
+
+<section class="philosophy-story">
+    <h2>Harmony of Culinary Traditions</h2>
+    <p class="highlight-text">
+        Harmony Bistro는 서로 다른 음식 문화가 <strong>하나의 공간에서 조화를 이루는 경험</strong>을
+        제공하고자 하는 철학에서 시작되었습니다.
+    </p>
+    <p>
+        우리는 <strong>한식, 중식, 양식</strong>이라는 서로 다른 요리 전통을 단순히 모아 제공하는 것이 아니라,
+        각 요리가 가진 <em>문화적 배경과 고유한 가치</em>를 존중하며 새로운 미식 경험을 만들어 가고 있습니다.
+    </p>
+    <p>
+        Harmony Bistro에서는 식사를 단순한 한 끼의 소비가 아닌,
+        <span class="point-text">하나의 문화적 경험</span>으로 느낄 수 있도록
+        공간과 음식, 그리고 서비스의 조화를 중요하게 생각합니다.
+    </p>
+    <p class="quote-text">
+        "Different cuisines, one harmony of taste."
+    </p>
+</section>
+<section class="philosophy-values">
+    <div class="value-box">
+        <h3>Korean Cuisine (한식)</h3>
+        <p class="lead-text">
+            전통의 깊이와 자연의 조화를 담은 한국의 음식 문화
+        </p>
+        <p>
+            한식은 오랜 역사 속에서 <strong>자연과의 균형</strong>을 중요하게 여겨온 음식 문화입니다.
+            Harmony Bistro는 신선한 재료와 전통적인 조리법을 바탕으로
+            한식이 가진 깊은 풍미를 현대적인 감각으로 재해석합니다.
+        </p>
+        <p>
+            발효 음식이 가진 독특한 풍미와 다양한 반찬 문화는
+            <span class="point-text">건강함과 풍부한 맛의 조화</span>를 만들어냅니다.
+            Harmony Bistro는 이러한 한식의 매력을 현대적인 레스토랑 스타일로
+            고객들에게 전달하고자 합니다.
+        </p>
+    </div>
+    <div class="value-box">
+        <h3>Chinese Cuisine (중식)</h3>
+        <p class="lead-text">
+            강렬한 풍미와 다양한 조리법이 만들어내는 미식의 세계
+        </p>
+        <p>
+            중식은 볶음, 찜, 튀김 등 다양한 조리 방식이 어우러져
+            <strong>풍부하고 강렬한 맛</strong>을 완성하는 음식 문화입니다.
+            다양한 향신료와 조리 기법이 결합되어 독특한 풍미를 만들어냅니다.
+        </p>
+        <p>
+            Harmony Bistro에서는 이러한 중식의 매력을 살려
+            전통적인 풍미를 유지하면서도
+            <span class="point-text">세련된 레스토랑 스타일</span>로 재구성된
+            특별한 요리를 선보이고 있습니다.
+        </p>
+    </div>
+    <div class="value-box">
+        <h3>Western Cuisine (양식)</h3>
+        <p class="lead-text">
+            재료의 본연의 맛과 세련된 플레이팅이 돋보이는 요리
+        </p>
+        <p>
+            양식은 재료 본연의 풍미를 살리고 섬세한 조리 과정과
+            <strong>아름다운 플레이팅</strong>을 통해 완성되는 음식 문화입니다.
+            요리의 색감과 구성 또한 중요한 요소로 여겨집니다.
+        </p>
+        <p>
+            Harmony Bistro는 클래식한 서양 요리의 매력을 기반으로
+            현대적인 감각을 더해
+            <span class="point-text">특별한 미식 경험</span>을 제공하며,
+            세련된 분위기 속에서 다양한 요리를 즐길 수 있도록 합니다.
+        </p>
+    </div>
+</section>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

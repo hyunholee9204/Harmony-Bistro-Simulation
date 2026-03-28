@@ -1,0 +1,214 @@
+h1 {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 40px;
+    color: #555;
+}
+
+.store-select {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    font-size: 18px;
+}
+
+.store-select label {
+    cursor: pointer;
+    padding: 10px 18px;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+.store-select input {
+    margin-right: 8px;
+}
+
+.store-select input:checked + span,
+.store-select label:hover {
+    color: #e67e22;
+    font-weight: 600;
+}
+
+.calendar-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.calendar {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    width: 280px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.calendar h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #666;
+}
+
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+}
+
+.day {
+    padding: 8px 0;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.day:hover {
+    background: #eee;
+}
+
+.day.selected {
+    background: #e67e22;
+    color: white;
+}
+
+.day.disabled {
+    color: #bbb;
+    background: #f5f5f5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+#time-section {
+    margin-top: 60px;
+    margin-bottom: 120px;
+    text-align: center;
+}
+
+.time-title {
+    margin-bottom: 20px;
+    color: #444;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.time-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.time-btn {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    background: #e67e22;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.time-btn:hover {
+    background: #d35400;
+}
+
+.time-btn.selected {
+    background: #2c3e50;
+}
+
+.time-btn.disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.time-btn.full {
+    background: #f5c6a5;
+    color: white;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.time-btn.full:hover {
+    background: #f5c6a5;
+}
+
+.time-btn.selected {
+    background: #2c3e50;
+}
+
+.day.disabled {
+    color: #bbb;
+    background: #f5f5f5;
+    pointer-events: none;
+}
+
+.reserve-btn {
+    margin-top: 30px;
+    padding: 14px 40px;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.reserve-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.time-btn.full {
+    background: #f2b38a;
+    cursor: not-allowed;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+    background: white;
+    width: 400px;
+    margin: 100px auto;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+}
+
+.modal-content input,
+.modal-content select {
+    width: 100%;
+    padding: 10px 0;
+    margin: 10px 0;
+}
+
+.close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.submit-btn {
+    margin-top: 20px;
+    padding: 12px;
+    width: 100%;
+    background: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+}

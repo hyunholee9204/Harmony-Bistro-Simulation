@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Harmony Bistro | Event</title>
+    <link rel="stylesheet" href="/css/MainPage.css">
+    <link rel="stylesheet" href="/css/Event.css">
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+
+<section class="event-hero">
+    <h1>이벤트 안내 🎉</h1>
+    <p>다양한 혜택을 만나보세요!</p>
+</section>
+<section class="event-section">
+    <h2 class="event-title">진행중인 이벤트</h2>
+
+    <div class="event-container">
+        <div class="event-card" th:each="e : ${ongoing}">
+            <img th:src="${e.imageUrl}">
+            <h3 th:text="${e.title}"></h3>
+            <p th:text="${e.startDate} + ' ~ ' + ${e.endDate}"></p>
+
+            <button class="detail-btn"
+                    th:attr="data-title=${e.title},
+                             data-content=${e.content},
+                             data-start=${e.startDate},
+                             data-end=${e.endDate},
+                             data-img=${e.imageUrl}">
+                상세보기
+            </button>
+        </div>
+    </div>
+</section>
+
+<section class="event-section">
+    <h2 class="event-title">진행 예정 이벤트</h2>
+
+    <div class="event-container">
+        <div class="event-card upcoming" th:each="e : ${upcoming}">
+            <img th:src="${e.imageUrl}">
+            <h3 th:text="${e.title}"></h3>
+            <p th:text="${e.startDate} + ' ~ ' + ${e.endDate}"></p>
+
+            <button class="detail-btn"
+                    th:attr="data-title=${e.title},
+                             data-content=${e.content},
+                             data-start=${e.startDate},
+                             data-end=${e.endDate},
+                             data-img=${e.imageUrl}">
+                상세보기
+            </button>
+        </div>
+    </div>
+</section>
+
+<section class="event-section">
+    <h2 class="event-title">종료된 이벤트</h2>
+
+    <div class="event-container">
+        <div class="event-card ended" th:each="e : ${ended}">
+            <img th:src="${e.imageUrl}">
+            <h3 th:text="${e.title}"></h3>
+            <p th:text="${e.startDate} + ' ~ ' + ${e.endDate}"></p>
+
+            <button class="detail-btn"
+                    th:attr="data-title=${e.title},
+                             data-content=${e.content},
+                             data-start=${e.startDate},
+                             data-end=${e.endDate},
+                             data-img=${e.imageUrl}">
+                상세보기
+            </button>
+        </div>
+    </div>
+</section>
+
+<div id="eventModal" class="modal">
+
+    <span class="close">&times;</span>
+    <div class="modal-content">
+        <img id="modalImg">
+        <h2 id="modalTitle"></h2>
+        <p id="modalDate"></p>
+        <p id="modalContent"></p>
+        <a href="/reservation" class="reserve-btn">예약하기</a>
+    </div>
+</div>
+<script>
+    const modal = document.getElementById("eventModal");
+    const closeBtn = document.querySelector(".close");
+
+    const modalImg = document.getElementById("modalImg");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalDate = document.getElementById("modalDate");
+    const modalContent = document.getElementById("modalContent");
+
+    const buttons = document.querySelectorAll(".detail-btn");
+
+    buttons.forEach(btn => {
+        btn.addEventListener("click", () => {
+
+            const title = btn.getAttribute("data-title");
+            const content = btn.getAttribute("data-content");
+            const start = btn.getAttribute("data-start");
+            const end = btn.getAttribute("data-end");
+            const img = btn.getAttribute("data-img");
+
+            modalTitle.innerText = title;
+            modalContent.innerText = content;
+            modalDate.innerText = start + " ~ " + end;
+            modalImg.src = img;
+
+            modal.style.display = "block";
+        });
+    });
+
+    closeBtn.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

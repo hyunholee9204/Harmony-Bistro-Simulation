@@ -1,0 +1,297 @@
+body {
+    margin: 0;
+    background: #1e1e1e;
+    color: white;
+    font-family: sans-serif;
+}
+
+.top-bar {
+    height: 70px;
+    background: #2c2c2c;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.left {
+    display: flex;
+    gap: 10px;
+}
+
+.viewport {
+    width: 100%;
+    height: calc(100vh - 70px);
+    overflow: hidden;
+}
+
+.world {
+    display: flex;
+    width: 300%;
+    height: 100%;
+    transition: transform 0.6s ease;
+}
+
+.section {
+    width: 100vw;
+    height: 100%;
+}
+
+/* 주방 */
+.kitchen {
+    display: flex;
+    background: #2b2b2b;
+}
+
+.kitchen-area {
+    width: 33.33%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.room {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border: 3px solid #aaa;
+    background: #3a3a3a;
+
+    background-image:
+        linear-gradient(#444 1px, transparent 1px),
+        linear-gradient(90deg, #444 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+.title {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+}
+
+.stove {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: #ff7043;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.table-area {
+    position: absolute;
+    width: 80px;
+    height: 40px;
+    background: #8d6e63;
+    border-radius: 5px;
+}
+
+.sink {
+    position: absolute;
+    width: 60px;
+    height: 40px;
+    background: #64b5f6;
+    border-radius: 5px;
+}
+
+/* 테이블 */
+.dining {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tables {
+    display: grid;
+    grid-template-columns: repeat(3, 120px);
+    gap: 20px;
+}
+
+.table {
+    background: #999;
+    padding: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.table.occupied {
+    background: #ff6666;
+}
+
+/* 계산대 */
+.counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.counter-box {
+    background: #222;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.counter-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    padding: 50px;
+}
+
+.counter-order {
+    width: 280px;
+    background: #2c2c2c;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.counter-order h3 {
+    margin-bottom: 10px;
+}
+
+.register {
+    margin-top: 15px;
+    padding: 20px;
+    background: #777;
+    border-radius: 5px;
+}
+
+/* 액션 패널 */
+#action-panel {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.orders {
+    position: absolute;
+    bottom: 20px;
+    left: 10px;
+    right: 10px;
+}
+
+.orders {
+    position: absolute;
+    bottom: 20px;
+    left: 10px;
+    right: 10px;
+}
+
+.menu-list {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+    background: white;
+    color: black;
+    width: 300px;
+    margin: 100px auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.receipt {
+    background: #fff;
+    color: #000;
+    width: 320px;
+    margin: 80px auto;
+    padding: 20px;
+    border-radius: 10px;
+    font-family: 'Courier New', monospace;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    position: relative;
+}
+
+.receipt h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    border-bottom: 2px dashed #000;
+    padding-bottom: 10px;
+}
+
+.receipt-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+.receipt-total {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 2px dashed #000;
+    font-weight: bold;
+    text-align: right;
+}
+
+.close-btn {
+    margin-top: 15px;
+    width: 100%;
+    padding: 8px;
+    background: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    background: #555;
+}
+
+#action-panel {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #2b2b2b;
+    padding: 15px 20px;
+    border-radius: 15px;
+    display: flex;
+    gap: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.6);
+}
+
+.action-btn {
+    padding: 10px 15px;
+    background: #444;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+    background: #666;
+    transform: translateY(-2px);
+}
+
+.action-btn.highlight {
+    background: #4caf50;
+}
+
+.action-btn.highlight:hover {
+    background: #66bb6a;
+}

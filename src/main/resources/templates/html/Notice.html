@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Harmony Bistro | Notice</title>
+    <link rel="stylesheet" th:href="@{/css/MainPage.css}">
+    <link rel="stylesheet" th:href="@{/css/notice.css}">
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div class="notice-container">
+    <h1>공지사항</h1>
+    <div class="notice-info">
+        Total <span th:text="${list.size()}"></span>건
+    </div>
+    <table class="notice-table">
+        <thead>
+        <tr>
+            <th>번호</th>
+            <th class="title-col">제목</th>
+            <th>작성자</th>
+            <th>작성일</th>
+            <th>조회</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="n, stat : ${list}">
+            <td>
+                <span th:if="${stat.index < 3}" class="badge">공지</span>
+                <span th:unless="${stat.index < 3}" th:text="${n.id}"></span>
+            </td>
+            <td class="title-col">
+                <a th:href="@{/notice/{id}(id=${n.id})}"
+                   th:text="${n.title}"></a>
+            </td>
+            <td>관리자</td>
+            <td th:text="${#temporals.format(n.createdAt, 'yyyy-MM-dd')}"></td>
+            <td>0</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

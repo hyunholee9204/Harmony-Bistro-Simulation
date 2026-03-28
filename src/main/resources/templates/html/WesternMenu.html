@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Harmony Bistro - Western Menu</title>
+    <link rel="stylesheet" th:href="@{/css/MainPage.css}">
+    <link rel="stylesheet" th:href="@{/css/Menu.css}">
+</head>
+<body class="page-container">
+<div th:replace="fragments/header :: header"></div>
+<section class="menu-hero">
+    <h1>Western Cuisine</h1>
+    <p>정통 서양 요리의 깊은 풍미와 다채로운 메뉴를 Harmony Bistro에서 경험해보세요.</p>
+</section>
+<section class="menu-section">
+    <h2>Signature Dishes</h2>
+    <div class="menu-grid">
+        <div class="menu-card">
+            <img src="/images/western/steak.jpeg">
+            <h3>안심 스테이크</h3>
+            <p>부드러운 안심 부위를 사용해 육즙을 살려 구운 프리미엄 스테이크</p>
+            <p class="menu-note">※ 굽기 정도(레어, 미디움, 웰던)를 선택할 수 있습니다.</p>
+            <span class="price">₩48,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/western/pizza.jpeg">
+            <h3>마르게리타 피자</h3>
+            <p>토마토 소스, 모짜렐라 치즈, 바질을 올린 이탈리아 전통 피자</p>
+            <span class="price">₩21,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/western/pizza2.jpeg">
+            <h3>고르곤졸라 피자</h3>
+            <p>고르곤졸라 치즈와 꿀을 곁들여 즐기는 이탈리아 스타일 피자</p>
+            <span class="price">₩23,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/western/tomato.jpeg">
+            <h3>해물 토마토 파스타</h3>
+            <p>신선한 해산물과 토마토 소스로 만든 상큼한 파스타</p>
+            <span class="price">₩24,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/western/alio.jpeg">
+            <h3>알리오 올리오 파스타</h3>
+            <p>마늘과 올리브오일로 담백하게 만든 이탈리아 전통 파스타</p>
+            <span class="price">₩19,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/western/rijoddo.jpeg">
+            <h3>오징어 먹물 리조또</h3>
+            <p>오징어 먹물과 해산물을 넣어 깊은 풍미와 고소한 맛을 살린 이탈리아 리조또</p>
+            <span class="price">₩25,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/western/gratang.jpeg">
+            <h3>치즈 그라탕</h3>
+            <p>크림소스와 치즈를 듬뿍 올려 오븐에 구운 프랑스식 오븐 요리</p>
+            <span class="price">₩19,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/western/nyokki.jpeg">
+            <h3>감자 뇨끼</h3>
+            <p>부드러운 감자 반죽으로 만든 이탈리아 전통 파스타 요리</p>
+            <span class="price">₩24,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/western/kambas.jpeg">
+            <h3>새우 감바스</h3>
+            <p>올리브오일과 마늘에 새우를 넣어 끓인 스페인식 요리</p>
+            <span class="price">₩26,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/western/salad.jpeg">
+            <h3>월도프 샐러드</h3>
+            <p>사과, 셀러리, 호두를 마요네즈로 버무린 클래식 샐러드</p>
+            <span class="price">₩15,000</span>
+        </div>
+    </div>
+</section>
+<section class="menu-section">
+    <h2>Western Desserts</h2>
+    <div class="menu-grid dessert">
+        <div class="menu-card">
+            <img src="/images/western/tira.jpeg">
+            <h3>티라미수</h3>
+            <p>마스카르포네 치즈와 커피 향이 어우러진 이탈리아 디저트</p>
+            <span class="price">₩9,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/western/cake.jpeg">
+            <h3>치즈 케이크</h3>
+            <p>진한 치즈 풍미가 매력적인 부드러운 케이크</p>
+            <span class="price">₩9,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/western/panna.jpeg">
+            <h3>판나코타</h3>
+            <p>부드러운 크림 푸딩에 달콤한 베리 소스를 곁들인 이탈리아 디저트</p>
+            <span class="price">₩8,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/western/choko.jpeg">
+            <h3>초콜릿 브라우니</h3>
+            <p>진한 초콜릿 풍미와 촉촉한 식감이 매력적인 디저트</p>
+            <span class="price">₩7,000</span>
+        </div>
+    </div>
+</section>
+<section class="menu-section">
+    <h2>Side Menu & Beverages</h2>
+    <div class="menu-grid">
+        <div class="menu-card">
+            <img src="/images/western/coffee.jpeg">
+            <h3>커피</h3>
+            <p>아메리카노, 카페라떼 등 다양한 커피 메뉴</p>
+            <p class="menu-note">※ 원하시는 커피 종류를 선택하실 수 있습니다.</p>
+            <span class="price">₩3,500</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/western/wine.jpeg">
+            <h3>와인</h3>
+            <p>레드와인과 화이트와인을 선택할 수 있습니다.</p>
+            <span class="price">₩15,000</span>
+        </div>
+        <div class="menu-card">
+            <img src="/images/western/beer.jpeg">
+            <h3>맥주</h3>
+            <p>시원한 생맥주 또는 병맥주</p>
+            <span class="price">₩6,000</span>
+        </div>
+    </div>
+</section>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

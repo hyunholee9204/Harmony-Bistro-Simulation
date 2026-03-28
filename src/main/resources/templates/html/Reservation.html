@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Harmony Bistro | Reservation</title>
+    <link rel="stylesheet" th:href="@{/css/MainPage.css}">
+    <link rel="stylesheet" th:href="@{/css/reservation.css}">
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"></div>
+
+<h1>Reservation</h1>
+
+<div class="store-select">
+    <label><input type="radio" name="store" value="강남점"><span>강남점</span></label>
+    <label><input type="radio" name="store" value="홍대점"><span>홍대점</span></label>
+    <label><input type="radio" name="store" value="인천점"><span>인천점</span></label>
+    <label><input type="radio" name="store" value="수원점"><span>수원점</span></label>
+</div>
+
+<div class="calendar-container" id="calendarContainer" style="display:none;">
+    <div class="calendar" id="cal1"></div>
+    <div class="calendar" id="cal2"></div>
+    <div class="calendar" id="cal3"></div>
+</div>
+
+<div id="time-section"></div>
+
+<!-- 예약 모달 -->
+<div id="reserveModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+
+        <h2>예약 정보 입력</h2>
+
+        <input type="text" id="name" placeholder="이름">
+        <input type="text" id="phone" placeholder="전화번호">
+
+        <select id="peopleCount">
+            <option value="">인원 선택</option>
+            <option value="1">1명</option>
+            <option value="2">2명</option>
+            <option value="3">3명</option>
+            <option value="4">4명</option>
+            <option value="5">5명</option>
+        </select>
+
+        <button class="submit-btn" onclick="submitReservation()">예약 완료</button>
+    </div>
+</div>
+
+<script th:inline="javascript">
+    const reservations = /*[[${reservations}]]*/ [];
+</script>
+
+<script>
+    const today = new Date();
+    let selectedDate = null;
+    let selectedTime = null;
+
+    document.querySelectorAll("input[name='store']").forEach(radio => {
+        radio.addEventListener("change", function () {
+
+            document.getElementById("calendarContainer").style.display = "flex";
+
+            const calendars = [
+                document.getElementById("cal1"),
+                document.getElementById("cal2"),
+                document.getElementById("cal3")
+            ];
+
+            calendars.forEach((cal, index) => {
+                let date = new Date(today.getFullYear(), today.getMonth() + index, 1);
+                renderCalendar(cal, date);
+            });
+
+            document.getElementById("time-section").innerHTML = "";
+            selectedDate = null;
+            selectedTime = null;
+        });
+    });
+
+    function renderCalendar(container, date) {
+
+        const year = date.getFullYear();
+        const month = date.getMonth();
+
+        let html = `<h3>${year}년 ${month + 1}월</h3>`;
+        html += `<div class="days">`;
+
+        const firstDay = new Date(year, month, 1).getDay();
+        const lastDate = new Date(year, month + 1, 0).getDate();
+
+        for (let i = 0; i < firstDay; i++) {
+            html += `<div></div>`;
+        }
+
+        for (let i = 1; i <= lastDate; i++) {
+
+            const current = new Date(year, month, i);
+            const formatted = `${year}-${String(month+1).padStart(2,'0')}-${String(i).padStart(2,'0')}`;
+
+            if (current < new Date(today.getFullYear(), today.getMonth(), today.getDate())) {
+                html += `<div class="day disabled">${i}</div>`;
+            } else {
+                html += `<div class="day" onclick="selectDate('${formatted}', this)">${i}</div>`;
+            }
+        }
+
+        html += `</div>`;
+        container.innerHTML = html;
+    }
+
+    function isFull(date, time) {
+
+        const selectedStore = document.querySelector("input[name='store']:checked")?.value.trim();
+
+        return reservations.filter(r => {
+
+            let rStore = r.store?.trim();
+
+            let rDate = `${r.reservationDate.year}-${String(r.reservationDate.monthValue).padStart(2,'0')}-${String(r.reservationDate.dayOfMonth).padStart(2,'0')}`;
+
+            let rTime = `${String(r.reservationTime.hour).padStart(2,'0')}:${String(r.reservationTime.minute).padStart(2,'0')}`;
+
+            return rStore === selectedStore &&
+                   rDate === date &&
+                   rTime === time;
+
+        }).length >= 5;
+    }
+
+    function selectDate(date, el) {
+
+        selectedDate = date;
+
+        document.querySelectorAll(".day").forEach(d => d.classList.remove("selected"));
+        el.classList.add("selected");
+
+        const timeSection = document.getElementById("time-section");
+
+        let html = `<h3 class="time-title">${date} 예약 가능 시간</h3>`;
+        html += `<div class="time-list">`;
+
+        for (let i = 11; i <= 21; i++) {
+
+            if (i === 13) continue;
+
+            let time = i + ":00";
+
+            if (isFull(date, time)) {
+                html += `<button class="time-btn full" disabled>${time}</button>`;
+            } else {
+                html += `<button class="time-btn" onclick="selectTime('${time}', this)">${time}</button>`;
+            }
+        }
+
+        html += `</div>`;
+        html += `<button class="reserve-btn" id="reserveBtn" disabled>예약하기</button>`;
+
+        timeSection.innerHTML = html;
+    }
+
+    function selectTime(time, el) {
+
+        selectedTime = time;
+
+        document.querySelectorAll(".time-btn").forEach(b => b.classList.remove("selected"));
+        el.classList.add("selected");
+
+        const btn = document.getElementById("reserveBtn");
+        btn.disabled = false;
+
+        btn.onclick = function () {
+            document.getElementById("reserveModal").style.display = "block";
+        };
+    }
+
+    function closeModal() {
+        document.getElementById("reserveModal").style.display = "none";
+    }
+
+    function submitReservation() {
+
+        const store = document.querySelector("input[name='store']:checked").value;
+
+        const name = document.getElementById("name").value;
+        const phone = document.getElementById("phone").value;
+        const peopleCount = document.getElementById("peopleCount").value;
+
+        if (!name || !phone || !peopleCount) {
+            alert("모든 정보를 입력해주세요");
+            return;
+        }
+
+        fetch("/reservation/save", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                store: store,
+                reservationDate: selectedDate,
+                reservationTime: selectedTime,
+                name: name,
+                phone: phone,
+                peopleCount: peopleCount
+            })
+        })
+        .then(res => res.text())
+        .then(data => {
+            alert("예약 완료!");
+            closeModal();
+            location.reload();
+        });
+    }
+</script>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

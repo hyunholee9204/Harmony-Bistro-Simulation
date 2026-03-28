@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Harmony Bistro | Notice Detail</title>
+    <link rel="stylesheet" th:href="@{/css/MainPage.css}">
+    <link rel="stylesheet" th:href="@{/css/notice.css}">
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+
+<div class="notice-detail-container">
+
+    <h1 class="detail-title" th:text="${notice.title}"></h1>
+
+    <div class="detail-info">
+        <span>작성자 : 관리자</span>
+        <span th:text="'작성일 : ' + ${#temporals.format(notice.createdAt, 'yyyy-MM-dd')}"></span>
+        <span>조회수 : 0</span>
+    </div>
+
+    <div class="detail-content" th:text="${notice.content}">
+        공지 내용이 들어갑니다.
+    </div>
+
+    <div class="detail-buttons">
+        <a href="/notice" class="btn-list">목록으로</a>
+    </div>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

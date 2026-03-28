@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>레스토랑 시뮬레이션</title>
+    <link rel="stylesheet" href="/css/simulation.css">
+</head>
+
+<body>
+
+<div class="top-bar">
+    <div class="left">
+        <button onclick="goHome()">🏠 홈</button>
+        ⏰ <span id="time">11:00</span>
+    </div>
+
+    <div class="center">
+        💰 매출: <span id="sales">0</span>원
+    </div>
+
+    <div>
+        <button onclick="moveToKitchen()">주방</button>
+        <button onclick="moveToDining()">테이블</button>
+        <button onclick="moveToCounter()">계산대</button>
+    </div>
+
+    <div>
+        <button onclick="addCustomer()">손님 입장</button>
+    </div>
+
+    <div>
+        <button onclick="startGame()">▶ 시작</button>
+    </div>
+</div>
+
+<div class="viewport">
+    <div class="world" id="world">
+
+        <div class="section kitchen">
+            <div class="kitchen-area">
+                <div class="room">
+                    <div class="title">한식 주방</div>
+                    <div id="korean-orders" class="orders"></div>
+                </div>
+            </div>
+
+            <div class="kitchen-area">
+                <div class="room">
+                    <div class="title">중식 주방</div>
+                    <div id="chinese-orders" class="orders"></div>
+                </div>
+            </div>
+
+            <div class="kitchen-area">
+                <div class="room">
+                    <div class="title">양식 주방</div>
+                    <div id="western-orders" class="orders"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section dining">
+            <div class="tables" id="tables"></div>
+        </div>
+
+        <div class="section counter">
+            <div class="counter-container" id="counter-orders"></div>
+        </div>
+
+    </div>
+</div>
+
+<div id="action-panel"></div>
+
+<div id="order-modal" class="modal">
+    <div class="receipt">
+        <h2>🧾 ORDER RECEIPT</h2>
+        <div id="receipt-body"></div>
+        <div class="receipt-total">
+            총 금액: <span id="receipt-total-price"></span>원
+        </div>
+        <button class="close-btn" onclick="closeModal()">닫기</button>
+    </div>
+</div>
+
+<script>
+
+    let sales = 0;
+    let gameTime = 11;
+
+    const tables = [];
+    const waitingList = [];
+
+    const menuData = {
+        korean: [
+            {name:"비빔밥", price:14000},{name:"불고기", price:22000},
+            {name:"김치찌개", price:15000},{name:"생선구이", price:18000},
+            {name:"분식 세트", price:15000},{name:"잔치국수", price:13000},
+            {name:"한정식", price:35000},{name:"제육볶음", price:14000},
+            {name:"돼지국밥", price:13000},{name:"삼겹살", price:20000}
+        ],
+        chinese: [
+            {name:"짜장면", price:11000},{name:"짬뽕", price:13000},
+            {name:"탕수육", price:32000},{name:"마파두부", price:24000},
+            {name:"유린기", price:30000},{name:"칠리새우", price:30000},
+            {name:"깐풍기", price:30000},{name:"고추잡채", price:32000},
+            {name:"해물누룽지탕", price:38000},{name:"팔보채", price:42000}
+        ],
+        western: [
+            {name:"해물 토마토 파스타", price:24000},{name:"안심 스테이크", price:48000},
+            {name:"감자 뇨끼", price:24000},{name:"오징어 먹물 리조또", price:25000},
+            {name:"마르게리타 피자", price:21000},{name:"월도프 샐러드", price:15000},
+            {name:"치즈 그라탕", price:19000},{name:"고르곤졸라 피자", price:23000},
+            {name:"알리오올리오 파스타", price:19000},{name:"새우 감바스", price:26000}
+        ]
+    };
+
+    function goHome(){ location.href="/"; }
+
+    function startGame(){
+        alert("게임 시작!");
+        document.getElementById("time").innerText = gameTime + ":00";
+    }
+
+    function addCustomer(){
+        const size=Math.floor(Math.random()*4)+2;
+        waitingList.push({size});
+        alert(`손님 ${size}명 입장`);
+    }
+
+    function createTables(){
+        const container=document.getElementById("tables");
+
+        for(let i=1;i<=6;i++){
+            const table={
+                id:i,
+                status:"EMPTY",
+                size:0,
+                orders:[],
+                orderDetails:[],
+                totalPrice:0,
+                servedCount:0
+            };
+
+            tables.push(table);
+
+            const div=document.createElement("div");
+            div.className="table";
+            div.innerText=i+"번";
+            div.onclick=()=>onTableClick(table);
+
+            container.appendChild(div);
+        }
+    }
+
+    function onTableClick(table){
+        const panel=document.getElementById("action-panel");
+        panel.style.display="flex";
+        panel.innerHTML="";
+
+        if(table.status==="EMPTY" && waitingList.length>0){
+            panel.innerHTML+=`<button class="action-btn" onclick="seatCustomer(${table.id})">👥 손님 앉히기</button>`;
+        }
+
+        if(table.status==="OCCUPIED" || table.status==="COOKING"){
+            panel.innerHTML+=`<button class="action-btn" onclick="orderFood(${table.id})">📝 주문하기</button>`;
+            panel.innerHTML+=`<button class="action-btn" onclick="viewOrder(${table.id})">🧾 주문내역</button>`;
+        }
+
+        if(table.status==="READY"){
+            panel.innerHTML+=`<button class="action-btn highlight" onclick="moveToCounter()">💳 계산대로 이동</button>`;
+        }
+    }
+
+    function seatCustomer(id){
+        const table=tables.find(t=>t.id===id);
+        const team=waitingList.shift();
+
+        table.status="OCCUPIED";
+        table.size=team.size;
+
+        const tableDiv = document.querySelectorAll(".table")[id-1];
+        tableDiv.classList.add("occupied");
+
+        resetActionPanel();
+    }
+
+    function getMenuCount(size){
+        return size + Math.floor(Math.random()*3);
+    }
+
+    function orderFood(id){
+        const table=tables.find(t=>t.id===id);
+
+        if(table.orders.length>0){
+            alert("이미 주문했습니다");
+            return;
+        }
+
+        const types=["korean","chinese","western"];
+        const count=getMenuCount(table.size);
+
+        let total=0;
+        let list=[];
+        let detailList=[];
+
+        for(let i=0;i<count;i++){
+            const type=types[Math.floor(Math.random()*3)];
+            const menu=menuData[type][Math.floor(Math.random()*10)];
+
+            list.push(menu.name);
+            detailList.push({name:menu.name, price:menu.price});
+            total+=menu.price;
+
+            createKitchenOrder(table.id, type, menu.name);
+        }
+
+        const tip = Math.random()<0.5 ? 0 : (Math.floor(Math.random()*10)+1)*2000;
+
+        table.orders=list;
+        table.orderDetails=detailList;
+        table.totalPrice=total+tip;
+        table.status="COOKING";
+        table.servedCount=0;
+
+        createCounterCard(table,total,tip);
+
+        alert("주문 완료");
+    }
+
+    function createKitchenOrder(tableId, type, menuName){
+        const container = document.getElementById(type + "-orders");
+
+        const div = document.createElement("div");
+        div.className = "menu-list";
+
+        div.innerHTML = `
+            ${tableId}번 - ${menuName}
+            <button onclick="completeOrder(this)">완료</button>
+        `;
+
+        container.appendChild(div);
+    }
+
+    function completeOrder(btn){
+        const text = btn.parentElement.innerText.replace("완료","").trim();
+        const tableId = parseInt(text.split("번")[0]);
+        const table = tables.find(t => t.id === tableId);
+
+        table.servedCount++;
+
+        btn.parentElement.remove();
+
+        if(table.servedCount === table.orders.length){
+            table.status="READY";
+            alert(`${tableId}번 테이블 음식 완료! 계산 가능`);
+        }
+    }
+
+    function createCounterCard(table,total,tip){
+        const container=document.getElementById("counter-orders");
+
+        if(document.getElementById("counter-"+table.id)) return;
+
+        const div=document.createElement("div");
+        div.className="counter-order";
+        div.id="counter-"+table.id;
+
+        div.innerHTML=`
+            <h3>${table.id}번 테이블</h3>
+            <div>${table.orders.join(", ")}</div>
+            <div>금액: ${total}원</div>
+            <div>팁: ${tip}원</div>
+            <button onclick="pay(${table.id})">💳 계산하기</button>
+        `;
+
+        container.appendChild(div);
+    }
+
+    function viewOrder(id){
+        const table=tables.find(t=>t.id===id);
+
+        let html="";
+        let total=0;
+
+        table.orderDetails.forEach(item=>{
+            html+=`
+                <div class="receipt-item">
+                    <span>${item.name}</span>
+                    <span>${item.price}원</span>
+                </div>
+            `;
+            total+=item.price;
+        });
+
+        document.getElementById("receipt-body").innerHTML=html;
+        document.getElementById("receipt-total-price").innerText=total;
+
+        document.getElementById("order-modal").style.display="block";
+    }
+
+    function closeModal(){
+        document.getElementById("order-modal").style.display="none";
+    }
+
+    function pay(id){
+        const table=tables.find(t=>t.id===id);
+
+        if(table.status!=="READY"){
+            alert("음식이 모두 나오지 않았습니다!");
+            return;
+        }
+
+        sales+=table.totalPrice;
+        document.getElementById("sales").innerText=sales;
+
+        table.status="EMPTY";
+        table.orders=[];
+        table.orderDetails=[];
+        table.totalPrice=0;
+        table.servedCount=0;
+
+        const tableDiv=document.querySelectorAll(".table")[id-1];
+        tableDiv.classList.remove("occupied");
+
+        const card=document.getElementById("counter-"+id);
+        if(card) card.remove();
+
+        alert("결제 완료");
+    }
+
+    function resetActionPanel(){
+        document.getElementById("action-panel").style.display="none";
+    }
+
+    function moveToKitchen(){
+        document.getElementById("world").style.transform="translateX(0)";
+        resetActionPanel();
+    }
+
+    function moveToDining(){
+        document.getElementById("world").style.transform="translateX(-100vw)";
+        resetActionPanel();
+    }
+
+    function moveToCounter(){
+        document.getElementById("world").style.transform="translateX(-200vw)";
+        resetActionPanel();
+    }
+
+    createTables();
+
+</script>
+</body>
+</html>

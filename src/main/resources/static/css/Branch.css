@@ -1,0 +1,129 @@
+.page-title {
+    padding: 50px 80px 20px;
+}
+
+.page-title h2 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.page-title p {
+    font-size: 16px;
+    color: #555;
+}
+
+.branch-hero {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0 80px;
+}
+
+.branch-hero img {
+    width: 85%;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.branch-list {
+    width: 85%;
+    margin: 0 auto 100px;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.branch-item {
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.branch-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+.branch-item h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.branch-item p {
+    font-size: 15px;
+    color: #444;
+    margin-bottom: 5px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+    background: #fff;
+    margin: 8% auto;
+    padding: 20px;
+    width: 60%;
+    border-radius: 12px;
+    position: relative;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: fadeIn 0.3s ease;
+}
+
+.close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 26px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #888;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .branch-list {
+        grid-template-columns: 1fr;
+    }
+
+    .branch-hero img {
+        height: 250px;
+    }
+
+    .page-title {
+        padding: 30px 20px;
+    }
+
+    .modal-content {
+        width: 90%;
+    }
+}

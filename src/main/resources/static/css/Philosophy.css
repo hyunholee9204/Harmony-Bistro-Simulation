@@ -1,0 +1,93 @@
+.philosophy-hero{
+    background:
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url("/images/restaurant.jpeg") center/cover no-repeat;
+    height:320px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    text-align:center;
+}
+
+.philosophy-hero h1{
+    font-size:45px;
+    margin-bottom:10px;
+}
+
+.philosophy-hero p{
+    font-size:18px;
+}
+
+.philosophy-story{
+    max-width:900px;
+    margin:80px auto;
+    text-align:center;
+}
+
+.philosophy-story h2{
+    font-size:30px;
+    margin-bottom:20px;
+}
+
+.philosophy-story p{
+    font-size:18px;
+    line-height:1.8;
+}
+
+.philosophy-values{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    max-width:1100px;
+    margin:80px auto;
+}
+
+.value-box{
+    width:280px;
+    padding:30px;
+    background:#f7f7f7;
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.value-box h3{
+    margin-bottom:15px;
+}
+
+.value-box p{
+    line-height:1.6;
+}
+
+.value-box:hover{
+    transform:translateY(-6px);
+    box-shadow:0 8px 25px rgba(0,0,0,0.15);
+}
+
+.highlight-text{
+    font-size:20px;
+    font-weight:600;
+    color:#444;
+    margin-bottom:20px;
+}
+
+.point-text{
+    color:#c59d5f;
+    font-weight:600;
+}
+
+.quote-text{
+    margin-top:25px;
+    font-style:italic;
+    color:#777;
+    text-align:center;
+}
+
+.lead-text{
+    font-weight:600;
+    margin-bottom:10px;
+    color:#555;
+}
