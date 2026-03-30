@@ -171,7 +171,12 @@ EMPTY → OCCUPIED → COOKING → READY → EMPTY
 
 ## 📸 시뮬레이션 실행 화면
 
-> 추후 이미지 또는 GIF 추가 예정
+![image alt](https://github.com/hyunholee9204/Harmony-Bistro-Simulation/blob/fc7271f801f5c4e000e4236b4cba6dd18e1923cf/simul1.jpg)
+메인 페이지의 '레스토랑 입장' 버튼을 클릭하면 나오는 시뮬레이터 화면입니다.<br>
+앱처럼 동작하는 UI라고 생각하면 됩니다.
+
+주방, 테이블, 계산대 버튼을 통해 공간 이동을 자연스럽게 할 수 있으며, 손님 입장 버튼을 클릭해 테이블에 이동시킨 후
+메뉴 주문을 하면 주방과 계산대로 주문 내역이 넘어가게 됩니다.
 
 ---
 
