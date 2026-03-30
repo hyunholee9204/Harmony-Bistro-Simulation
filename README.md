@@ -36,7 +36,7 @@
 
 ![image alt](https://github.com/hyunholee9204/Harmony-Bistro-Simulation/blob/b7f9cc18e9b6c4b6948edbd7f181a25df0d9698f/BistroMainPage.jpg)
 메인페이지는 단순한 구조로 구성되어 있습니다.
-한식, 중식, 양식을 기반으로 하는 레스토랑임을 보여주고 있으며, 아래의 '레스토랑 입장' 버튼을 클릭하면<br>
+한식, 중식, 양식을 기반으로 하는 레스토랑임을 보여주고 있으며, 아래의 '레스토랑 입장' 버튼을 클릭하면
 시뮬레이터로 이동하게 됩니다.
 
 ---
