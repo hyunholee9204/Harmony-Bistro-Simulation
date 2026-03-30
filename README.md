@@ -34,7 +34,7 @@
 
 ## 📸 웹 사이트 접속 화면
 
-![image alt](https://github.com/hyunholee9204/AI-TrustDW/blob/ee8a6c48279a47f6a4e588315c3d7121f1d87eb0/dataset1.jpg)
+![image alt](https://github.com/hyunholee9204/Harmony-Bistro-Simulation/blob/b7f9cc18e9b6c4b6948edbd7f181a25df0d9698f/BistroMainPage.jpg)
 
 ---
 
