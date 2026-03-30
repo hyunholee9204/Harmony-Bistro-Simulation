@@ -35,6 +35,8 @@
 ## 📸 웹 사이트 접속 화면
 
 ![image alt](https://github.com/hyunholee9204/Harmony-Bistro-Simulation/blob/b7f9cc18e9b6c4b6948edbd7f181a25df0d9698f/BistroMainPage.jpg)
+메인페이지는 단순한 구조로 구성되어 있습니다.
+
 
 ---
 
